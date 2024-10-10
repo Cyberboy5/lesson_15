@@ -20,24 +20,14 @@ class Route{
         self::$routes['post'][$path] = $action;
     }
     
-    
-    
     public function action(){
         $path = $this->request->url();
         $method = $this->request->method();
-        echo '<pre>';
-        print_r($method);
-        // print_r(self::$routes['get'][$path]);
-        print_r(self::$routes[$method][$path]);
-        echo '</pre>';
-
-
         $action = self::$routes[$method][$path] ?? false;
 
         if(!$action){
             echo "404 Not Found:" . $path; 
         }
-
         if(is_array($action)){
             $controller = new $action[0]();
             $controller->{$action[1]}();

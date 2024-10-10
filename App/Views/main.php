@@ -1,14 +1,9 @@
 <?php
-    use App\Model\Product;
-        
-    if(isset($_GET['id'])){
-        
-        $id = $_GET['id'];
-        if (Product::delete($id)) {
-            header("Location:/ ");
-            exit(); 
-        } 
-    }
+
+use App\Model\Product;
+use App\Model\Category;
+$categories = Category::getAll();
+
 ?>
 
 

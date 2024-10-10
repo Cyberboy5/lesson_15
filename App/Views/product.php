@@ -18,16 +18,20 @@
         <tr>
 
             <td><?= $product['id']?></td>
-            <td><?= $product['image']?></td>
+            <td><img width="150px" src="../../<?=$product['image']?>" alt=""></td>
             <td><?= $product['name']?></td>
             <td><?= $product['price']?></td>
             <td><?= $product['category_id']?></td>
             <td>
 
-                <form action="" method = 'POST'>
-                    <?php $_SESSION['product_id'] = $product['id']?>
-                    <a class="btn btn-primary" href = 'editproduct.php?id=<?= $product['id']?> ' >Edit</a>
-                    <a class="btn btn-danger" href = '?id=<?= $product['id']?>' name = 'delete'>Delete</a>
+                <form action="/deleteProduct" method = 'POST'>
+                    <input type="hidden" name="id" value="<?=$product['id']?>" id="">
+                    <input type="submit" name="ok" class="btn btn-danger" value="Delete" id="">
+                </form>
+
+                <form action="/editProductPage" method = 'POST'>
+                    <input type="hidden" name="id" value="<?=$product['id']?>" id="">
+                    <input type="submit" name="ok" class="btn btn-success m-2" value="Edit" id="">
                 </form>
             </td>
         </tr>
